@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <meta name="description" content="The best sights to see in Arizona">
+    <meta name="author" content="Christopher Hansen">
+
+    <title>Arizona Sight-Seeing</title>
+</head>
+
+<body>
+    <!-- Side panel with ugly Arizona Flag colors. Needs improvement. -->
+    <aside class="container aside">
+        <h1>Arizona Sight-Seeing Listings</h1>
+        <hr>
+
+        <!-- Red panel within side panel -->
+        <div id="search-div">
+
+            <!-- Search text field -->
+            <input class="search-field" type="text" placeholder="What would you like to see?" data-bind="textInput: query">
+            <hr>
+
+            <!-- Error message if there is a problem accessing google maps -->
+            <div class="error" data-bind="visible: mapErrorMessage">
+                <h4>There was a problem with Google Maps. Try again later!</h4>
+            </div>
+
+            <!-- Filterable locations list -->
+            <div class="list-container">
+                <ul data-bind="foreach: filteredLocs">
+                    <li class="list_element location" data-bind="text: title, click: $parent.showInfo, visible: show"></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main map window -->
+    <main>
+        <div id="map" class="main"></div>
+    </main>
+
+
+    <script src="js/knockout-3.4.2.js"></script>
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script async defer onerror="mapError()" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpm5OXBjQMrN24_bR2qZcSvLpoF5gNLug&v=3&callback=initMap">
+    </script>
+</body>
+
+</html>
